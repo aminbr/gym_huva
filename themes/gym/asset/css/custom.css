@@ -1,0 +1,18 @@
+.filters > td > .form-group
+{
+    padding: 0px;
+    margin: 0px;
+}
+
+.filters > td > .form-group > input
+{
+    border:1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 5px 5px 25px #eee;
+}
+.filters > td > .form-group > select
+{
+    border:1px solid #fff;
+    border-radius: 5px;
+    box-shadow: 5px 5px 25px #eee;
+}
