@@ -190,7 +190,7 @@ $url = Yii::$app->request->get('r');
                         echo '<li>
                         <a data-toggle="collapse" href="#classExamples">
                             <i class="material-icons"><span class="fa fa-pencil-square"></span></i>
-                            <p>کلاس
+                            <p>کلاس ها
                                 <b class="caret"></b>
                             </p>
                         </a>
