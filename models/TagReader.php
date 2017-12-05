@@ -323,6 +323,23 @@ class TagReader extends Model{
                     fclose($myfile);
                     exit();
                 }
+                // check limit time exit (10 min)
+                $enterExitMemberModel = EnterExit::find()
+                        ->where(['tag_number' => $this->tagInput])
+                        ->andWhere(['!=', 'exit_date', ''])
+                        ->orderBy('id desc')->one();
+                $exitDateMember = intval($enterExitMemberModel->exit_date)+600; // 600 second = 10 min
+                if($exitDateMember > time())
+                {
+                    $res = '{"status":"3",'
+                            . '"data":"محدودیت در زمان ورود"}';
+                    $myfile = fopen(Yii::$app->basePath."/config/member_info.dat", "w");
+                    fwrite($myfile, $res);
+                    fclose($myfile);
+                    exit();
+                }
+                // end check limit time exit
+                
                 $memberModel = Member::find()->where(['tag_number' => $this->tagInput])->one();
                 $memberCashModel = MemberCash::find()->where(['member_id' => $memberModel->id])->orderBy('id desc')->one();
                 if(!empty($memberCashModel)){
