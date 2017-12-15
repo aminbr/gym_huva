@@ -57,7 +57,7 @@ class ReportController extends Controller{
         $enterExitModel = new EnterExitSearch();
         $dataProvider = $enterExitModel->gym(Yii::$app->request->queryParams);
         $models = $dataProvider->getModels();
-        
+//        die(var_dump($models));
         return $this->render('gym', [
             'dataProvider' => $dataProvider,
             'enterExitModel' => $enterExitModel,

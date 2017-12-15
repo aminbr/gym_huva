@@ -40,9 +40,9 @@ class EnterExitSearch extends EnterExit
     
     public function gym($params) {
         $activeQuery = static::find()->where(['exit_date' => '',])
-                ->orderBy('id asc')
-                ->joinWith('user')
-                ->joinWith('memberCash.class');
+                ->orderBy('id asc');
+//                ->joinWith('user')
+//                ->joinWith('memberCash.class');
         $dataProvider = new ActiveDataProvider([
             'query' => $activeQuery,
         ]);
