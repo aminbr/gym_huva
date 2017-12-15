@@ -83,8 +83,16 @@ class SettingController extends Controller{
         $res = exec("git pull origin master");
         if($res){
             Yii::$app->session->setFlash("success", 'عملیات به روز رسانی با موفقیت انجام شد');
+//            $result = '{"status":"'.$res.'"}';
+//            $myfile = fopen(Yii::$app->basePath."/config/member_infooooooooooooooooooo.dat", "w");
+//            fwrite($myfile, $result);
+//            fclose($myfile);
             $this->redirect(['gym/dashboard']);
         }  else {
+            $result = '{"status":"'.$res.'"}';
+            $myfile = fopen(Yii::$app->basePath."/config/update_failed.dat", "w");
+            fwrite($myfile, $result);
+            fclose($myfile);
             $this->redirect(['gym/dashboard']);
         }
     }

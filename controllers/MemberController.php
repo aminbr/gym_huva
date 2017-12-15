@@ -236,6 +236,8 @@ class MemberController extends Controller{
         //className
         $memberModel = Member::find()->where(['id' => $id])->one();
         $memberCashModel = MemberCash::find()->where(['member_id' => $memberModel->id])->orderBy('id desc')->one();
+        if(!empty($memberCashModel))
+	{
         $ClassRoomModel = ClassRoom::find()->where(['id' => $memberCashModel->class_id])->one();
         $className = $ClassRoomModel->name;
         //dateUse
@@ -252,7 +254,17 @@ class MemberController extends Controller{
         $numberDayLimit = $ClassRoomModel->day_limit;
         $countEnterExitMember = EnterExit::find()->where(['>=', 'enter_date' , $dateRegisterClass])->andWhere(['member_id' => $memberModel->id])->count();
         $numberUses = $numberDayLimit-$countEnterExitMember;
-        
+        }
+	else
+	{
+	$className = '--';
+	$dateUse = [
+	'year' => 00,
+	'month_num' => 00,
+	'day' => 00,
+	];
+	$numberUses = '--';
+	}
         return $this->renderAjax('detail', [
             'memberModel' => $memberModel,
             'className' => $className,

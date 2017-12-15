@@ -86,9 +86,8 @@ class InfoRelay extends \yii\db\ActiveRecord
                 $maxNumberRelay = Relay::find()->max('number');
                 $maxNumberRelay = empty($maxNumberRelay) ? 0:$maxNumberRelay;
                 $j = 1;
-                $Thousand = 1000;
                 for($i=$maxNumberRelay+1 ; $i <= ($this->number+$maxNumberRelay) ; $i++){
-                    $sql.=" ('".$this->name.$i+$Thousand."','".$i."','".$j."','".$this->ip_relay."','".$this->type."'),";
+                    $sql.=" ('".$this->name.$i."','".$i."','".$j."','".$this->ip_relay."','".$this->type."'),";
                     $j++;
                 }
                 $sql = substr($sql, 0, (strlen($sql)-1)).';';

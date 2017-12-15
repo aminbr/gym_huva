@@ -347,7 +347,7 @@ $js = "
                 push:false,
             });
             swal({
-                title: 'ثبت کلاس موفقیت آمیز بود',
+                title: 'ثبت کاربر موفقیت امیز بود',
 //                text: data.message,
                 type: 'success',
                 showCancelButton: false,
