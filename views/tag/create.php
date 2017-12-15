@@ -21,7 +21,7 @@ $form = ActiveForm::begin();
                 <div class="row">
                     
                     <div class="col-md-6">
-                        <div class="form-control">
+                        <div class="form-group">
                             <?=
                             $form->field($tagModel, 'type', [
                                 'options' =>
