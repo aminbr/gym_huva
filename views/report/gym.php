@@ -8,7 +8,7 @@ use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
-$this->title = 'گزارش باشگاه';
+$this->title = 'گزارش افراد درون باشگاه';
 ?>
 <style>
 th{
