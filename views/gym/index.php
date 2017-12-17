@@ -6,6 +6,7 @@ use miloschuman\highcharts\Highcharts;
 use miloschuman\highcharts\Highstock;
 use yii\web\JsExpression;
 use kartik\widgets\Growl;
+
 $this->title = 'صفحه اصلی';
 
 ?>
