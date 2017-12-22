@@ -74,17 +74,19 @@ th{
                                 'template' => "{update} {delete} ",
                                 'buttons' => [
                                     'update' => function($key, $model, $index) {
-                                        return Html::a('<button class="btn btn-success" rel="tooltip" type="button" data-original-title="" title="" style="padding:8px 10px;">
+                                        return Html::a('<button class="btn btn-success" style="padding:8px 10px;">
                                                 <span class="glyphicon glyphicon-pencil" ></span><div class="ripple-container"></div></button>', 
                                                 Url::to(['/user/user-update', 'id' => $model->id]), [
-                                                    'onclick' => 'showModal(this); return false;'
+                                                    'onclick' => 'showModal(this); return false;',
+                                                    'title' => 'ویرایش'
                                                 ]);
                                     },
                                     'delete' => function($key, $model, $index) {
-                                        return Html::a('<button class="btn btn-danger" rel="tooltip" type="button" data-original-title="" title="" style="padding:8px 10px;">
+                                        return Html::a('<button class="btn btn-danger" style="padding:8px 10px;">
                                                 <span class="glyphicon glyphicon-trash" ></span><div class="ripple-container"></div></button>', 
                                                 Url::to(['/user/user-delete', 'id' => $model->id]), [
-                                                    'onclick' => 'deleteUser(this); return false;'
+                                                    'onclick' => 'deleteUser(this); return false;',
+                                                    'title' => 'حذف'
                                         ]);
                                     },
 //                                    'view' => function($key, $model, $index)

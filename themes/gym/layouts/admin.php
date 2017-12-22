@@ -101,23 +101,23 @@ $url = Yii::$app->request->get('r');
                         </div>
                     </li>-->
                     <?php 
-                    if(isset(Yii::$app->user->identity->level) and Yii::$app->user->identity->level == 3 || Yii::$app->user->identity->level == 6){
-                        echo '<li>
-                        <a data-toggle="collapse" href="#componentsExamples">
-                            <i class="material-icons"><span class="fa fa-user-circle-o"></span></i>
-                            <p>کاربرها
-                                <b class="caret"></b>
-                            </p>
-                        </a>
-                        <div class="collapse" id="componentsExamples">
-                            <ul class="nav">
-                                <li>';
-                                echo Html::a('نمایش کاربران', ['user/user-list']);
-                            echo '</li>
-                                </ul>
-                            </div>
-                        </li>';
-                    }  
+//                    if(isset(Yii::$app->user->identity->level) and Yii::$app->user->identity->level == 3 || Yii::$app->user->identity->level == 6){
+//                        echo '<li>
+//                        <a data-toggle="collapse" href="#componentsExamples">
+//                            <i class="material-icons"><span class="fa fa-user-circle-o"></span></i>
+//                            <p>کاربرها
+//                                <b class="caret"></b>
+//                            </p>
+//                        </a>
+//                        <div class="collapse" id="componentsExamples">
+//                            <ul class="nav">
+//                                <li>';
+//                                echo Html::a('نمایش کاربران', ['user/user-list']);
+//                            echo '</li>
+//                                </ul>
+//                            </div>
+//                        </li>';
+//                    }  
                     ?>
 
                     <?php 
@@ -216,8 +216,9 @@ $url = Yii::$app->request->get('r');
                         </a>
                         <div class="collapse" id="reportExamples">
                             <ul class="nav">';
-                                echo '<li>'.Html::a('افراد درون باشگاه', ['report/report-gym']).'</li>';
+//                                echo '<li>'.Html::a('افراد درون باشگاه', ['report/report-gym']).'</li>';
                                 echo '<li>'.Html::a('گردش مالی', ['report/report-fund']).'</li>';
+                                echo '<li>'.Html::a('لیست تلفن ها', ['report/report-telephone']).'</li>';
                             echo '</ul>
                         </div>
                     </li>';
@@ -236,6 +237,7 @@ $url = Yii::$app->request->get('r');
                         <div class="collapse" id="settingExamples">
                             <ul class="nav">
                                 <li>';
+                                echo '<li>'.Html::a('کاربرها', ['user/user-list']).'</li>';
                                 echo '<li>'.Html::a('کمدهای درون باشگاه', ['setting/setting-dresser']).'</li>';
                                 echo '<li>'.Html::a('به روزآوری نرم افزار', ['setting/update-system']).'</li>';
                             echo '</li>
@@ -265,10 +267,10 @@ $url = Yii::$app->request->get('r');
                     }  
                     ?>
                     
-                    <li>
+<!--                    <li>
                         
-                        <?= Html::a('<i class="material-icons"><span class="fa fa-sign-out"></span></i>'.'خروج', ['/gym/logout']) ?>
-                    </li>
+                        <?php // echo Html::a('<i class="material-icons"><span class="fa fa-sign-out"></span></i>'.'خروج', ['/gym/logout']) ?>
+                    </li>-->
                     
                 </ul>
             </div>
@@ -303,7 +305,7 @@ $url = Yii::$app->request->get('r');
                             </li>-->
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
-                                    <i class="material-icons"><i class="fa fa-bell"></i></i>
+                                    <i class="material-icons"><i class="fa fa-bell-o"></i></i>
                                     <span class="notification">0</span>
                                     <p class="hidden-lg hidden-md">
                                         Notifications
@@ -330,7 +332,7 @@ $url = Yii::$app->request->get('r');
                                 </ul>
                             </li>
                             <li>
-                                <?= Html::a('<i class="material-icons"><i class="fa fa-user-circle"></i></i>', [
+                                <?= Html::a('<i class="material-icons"><i class="fa fa-television"></i></i>', [
                                     'gym/dashboard-memberpage' ], [
                                         'target' => '_blank',
                                     ]);
@@ -339,6 +341,12 @@ $url = Yii::$app->request->get('r');
                                     <i class="material-icons"><i class="fa fa-user-circle"></i></i>
                                     <p class="hidden-lg hidden-md">Profile</p>
                                 </a>-->
+                            </li>
+                            <li>
+                                <?= Html::a('<i class="material-icons"><span class="fa fa-sign-out"></span></i>', ['/gym/logout']) ?>
+                            </li>
+                            <li>
+                                <a>نام کاربر وارد شده : <?php echo Yii::$app->user->identity->username; ?></a>
                             </li>
                             <li class="separator hidden-lg hidden-md"></li>
                         </ul>
@@ -382,9 +390,11 @@ $url = Yii::$app->request->get('r');
                     </div>
                     <div class="col-lg-3 col-md-12 col-sm-12">
                         <div class="card card-stats">
-                            <div class="card-header" data-background-color="rose">
-                                <i class="material-icons"><i class="fa fa-eye"></i></i>
-                            </div>
+                            <?= Html::a('<div class="card-header" data-background-color="red">
+                                            <i class="fa fa-eye"></i>
+                                        </div>',
+                                    ['report/report-gym'],[
+                            ]) ?>
                             <div class="card-content">
                                 <!--<p class="category"></p>-->
                                 <h4 class="card-title">ظرفیت:<span id="labelCapacity"></span>نفر</h4>
@@ -494,11 +504,6 @@ $url = Yii::$app->request->get('r');
                             <li>
                                 <a href="http://www.huva.ir/contact/about.html">
                                     درباره ما
-                                </a>
-                            </li>
-                            <li>
-                                <a href="http://www.facebook.com/huva">
-                                    پروفایل
                                 </a>
                             </li>
                             <li>

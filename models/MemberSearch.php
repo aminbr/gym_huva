@@ -38,6 +38,27 @@ class MemberSearch extends Member
     }
     
     
+    public function telephone($params) {
+        $activeQuery = static::find()->where(['is_deleted' => 0]);
+        
+        $dataProvider = new ActiveDataProvider([
+            'query' => $activeQuery,
+            'pagination' => [
+                'totalCount' => $activeQuery->count(),
+                'pageSize' => 10,
+            ]
+        ]);
+        if(!$this->load($params) && $this->validate())
+        {
+            return $dataProvider;
+        }
+        
+        $activeQuery->andFilterWhere(['LIKE', 'name', $this->name])
+                    ->andFilterWhere(['LIKE', 'family', $this->family])
+                    ->andFilterWhere(['LIKE', 'mobile', $this->mobile]);
+        return $dataProvider;
+    }
+    
     /**
      * @inheritdoc
      */

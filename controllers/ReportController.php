@@ -13,6 +13,7 @@ use app\models\MemberCash;
 use app\models\Relay;
 use app\models\Member;
 use app\models\ClassRoom;
+use app\models\MemberSearch;
 /**
  * Description of ReportController
  *
@@ -149,4 +150,14 @@ class ReportController extends Controller{
         return $numberDresser;
     }
     
+    
+    public function actionReportTelephone()
+    {
+        $memberSearchModel = new MemberSearch();
+        $dataProvider = $memberSearchModel->telephone(Yii::$app->request->queryParams);
+        return $this->render('telephone', [
+            'dataProvider' => $dataProvider,
+            'memberSearchModel' => $memberSearchModel,
+        ]);
+    }
 }

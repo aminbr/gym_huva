@@ -24,7 +24,14 @@ $form = ActiveForm::begin([
             <div class="row">
                 <div class="col-md-6 col-md-offset-6">
                     <div class="form-group">
-                        <?= $form->field($openDresserModel, 'numberDresser')->textInput(); ?>
+                        <?= $form->field($openDresserModel, 'numberDresser', [
+                                'options' =>
+                                    [
+                                        'class' => 'form-group field-tagreader-taginput is-empty is-focused',
+                                    ],
+                            ])->textInput([
+                                'autofocus' => TRUE,
+                            ]); ?>
                     </div>
                 </div>
             </div>
@@ -36,3 +43,11 @@ $form = ActiveForm::begin([
 </div>
 
 <?php ActiveForm::end(); ?>
+
+<?php
+//    $this->registerJs("
+//                $('#mytext').attr('autofocus', true);
+//    ", yii\web\View::POS_END);
+    ?>
+
+        
