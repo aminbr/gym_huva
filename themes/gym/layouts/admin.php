@@ -219,6 +219,7 @@ $url = Yii::$app->request->get('r');
 //                                echo '<li>'.Html::a('افراد درون باشگاه', ['report/report-gym']).'</li>';
                                 echo '<li>'.Html::a('گردش مالی', ['report/report-fund']).'</li>';
                                 echo '<li>'.Html::a('لیست تلفن ها', ['report/report-telephone']).'</li>';
+                                echo '<li>'.Html::a(' ورود و خروج', ['report/report-detailenterexit']).'</li>';
                             echo '</ul>
                         </div>
                     </li>';

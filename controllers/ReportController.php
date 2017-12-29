@@ -14,6 +14,7 @@ use app\models\Relay;
 use app\models\Member;
 use app\models\ClassRoom;
 use app\models\MemberSearch;
+use app\models\EnterExitDetailReport;
 /**
  * Description of ReportController
  *
@@ -158,6 +159,20 @@ class ReportController extends Controller{
         return $this->render('telephone', [
             'dataProvider' => $dataProvider,
             'memberSearchModel' => $memberSearchModel,
+        ]);
+    }
+    
+    public function actionReportDetailenterexit()
+    {
+        $enterExitDetailModel = new EnterExitDetailReport();
+        $dataProvider = $enterExitDetailModel->search(Yii::$app->request->post());
+//        if($enterExitDetailModel->load(\Yii::$app->request->post()))
+//            die(var_dump($enterExitDetailModel));
+//        $models = $dataProvider->getModels();
+//        die(var_dump($models));
+        return $this->render('enterexit', [
+            'dataProvider' => $dataProvider,
+            'enterExitModel' => $enterExitDetailModel,
         ]);
     }
 }
