@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /* @var $this yii\web\View */
 use yii\widgets\Pjax;
 use yii\widgets\ActiveForm;
@@ -6,7 +6,7 @@ use miloschuman\highcharts\Highcharts;
 use miloschuman\highcharts\Highstock;
 use yii\web\JsExpression;
 use kartik\widgets\Growl;
-$this->title = 'welcome';
+$this->title = 'dashboard';
 
 ?>
 <style>
