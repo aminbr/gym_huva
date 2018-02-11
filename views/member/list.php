@@ -69,7 +69,7 @@ th{
                                 'header' => 'ویرایش',
                                 'headerOptions' => ['style' => 'color:#9c27b0'],
                                 'class' => yii\grid\ActionColumn::className(),
-                                'template' => "{update} {delete} {editcard} {view}",
+                                'template' => "{update} {delete} {editcard} {entermember} {view}",
                                 'buttons' => [
                                     'update' => function($key, $model, $index) {
                                         return Html::a('<button class="btn btn-success" style="padding:8px 10px;">
@@ -103,6 +103,14 @@ th{
                                             Url::to(['member-editcard', 'id' => $model->id]),[
                                                 'onclick' => 'showModal(this);return false;',
                                                     'title' => 'ویرایش کارت'
+                                        ]);
+                                    },
+                                    'entermember' => function($key, $model, $index)
+                                    {
+                                        return Html::a('<button class="btn btn-primary" style="padding:8px 10px;">
+                                                <span class="glyphicon glyphicon-log-in" ></span><div class="ripple-container"></div></button>',
+                                            Url::to(['gym/enter-no-card', 'id' => $model->id]),[
+                                                    'title' => 'ورود به باشگاه بدون کارت'
                                         ]);
                                     },
                                 ]

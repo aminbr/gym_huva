@@ -153,6 +153,22 @@ class GymController extends Controller{
             'openDresserModel' => $openDresserModel,
         ]);
     }
+
+
+    public function actionOpenDresserGym($id) {
+        $enterExitModel = EnterExit::find()->where(['member_id' => $id])->andWhere(['exit_date' => ''])->one();
+
+        $infoRelay = Relay::find()->where(['id' => $enterExitModel->number_dresser])->one();
+        $ipRelay = $infoRelay->ip_relay;
+        $numberRelay = $infoRelay->number_relay;
+        $ch = curl_init('http://'.$ipRelay.'/'.$numberRelay.'n');
+        curl_setopt($ch, CURLOPT_HEADER, 1);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 3);
+        curl_exec($ch);
+        curl_close($ch);
+
+        return $this->redirect(['dashboard']);
+    }
     
     
     public function actionGymCapacity() 
@@ -185,6 +201,16 @@ class GymController extends Controller{
         $tagReaderModel->tagInput = $nTag;
         if($tagReaderModel->validate())
             $tagReaderModel->save();
+    }
+
+    public function actionEnterNoCard($id)
+    {
+        $memberModel = Member::find()->where(['id' => $id])->one();
+        $tagReaderModel = new TagReader();
+        $tagReaderModel->tagInput = $memberModel->tag_number;
+        if($tagReaderModel->validate())
+            $tagReaderModel->save();
+        return $this->redirect(['dashboard']);
     }
     
     public function actionLockerRoom($nTag='')

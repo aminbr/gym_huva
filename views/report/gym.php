@@ -49,8 +49,8 @@ th{
                                                 return $data['year'].'/'.$data['month_num'].'/'.$data['day'];
                                         }
                                     ],
-                                    
-                                    
+
+
                                     [
                                         'attribute' => 'ساعت ثبت',
                                         'headerOptions' => ['style' => 'color:#9c27b0'],
@@ -107,19 +107,32 @@ th{
                                         'headerOptions' => ['style' => 'color:#9c27b0'],
                                         'class' => yii\grid\ActionColumn::className(),
                                         'template' => " {exit}",
-                                        'buttons' => [ 
+                                        'buttons' => [
                                             'exit' => function($key, $model, $index)
                                             {
-                                                return Html::a('<span class="glyphicon glyphicon-new-window text-danger" ></span> ', 
+                                                return Html::a('<span class="glyphicon glyphicon-new-window text-danger" ></span> ',
                                                 Url::to(['/report/report-delete', 'id' => $model->member_id]), [
                                                     'onclick' => 'exitMember(this); return false;'
                                                 ]);
-                                            }, 
+                                            },
+                                        ],
+                                    ],
+                                    [
+                                        'header' => 'باز کردن کمد',
+                                        'headerOptions' => ['style' => 'color:#9c27b0'],
+                                        'class' => yii\grid\ActionColumn::className(),
+                                        'template' => " {exit}",
+                                        'buttons' => [
+                                            'exit' => function($key, $model, $index)
+                                            {
+                                                return Html::a('<span class="glyphicon glyphicon-new-window text-danger" ></span> ',
+                                                Url::to(['/gym/open-dresser-gym', 'id' => $model->member_id]));
+                                            },
                                         ],
                                     ],
                                 ]
                             ]);
-                                
+
                             ?>
                         </div>
         </div>

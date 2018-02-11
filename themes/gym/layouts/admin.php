@@ -366,133 +366,194 @@ $url = Yii::$app->request->get('r');
                    
                 </div>
             </nav>
+
+
+
+
+
+
+
+
+
+
+
             <div class="content">
-                <div class="row">
-                    <div class="col-lg-3 col-md-12 col-sm-12">
-                        <div class="card card-stats">
-                            <?= Html::a('<div class="card-header" data-background-color="orange">
+
+                <?php
+                if(Yii::$app->user->identity->id == 4)
+                {
+                ?>
+
+                    <div class="row">
+
+                        <div class="col-lg-2 col-md-12 col-sm-12 col-md-offset-4">
+                            <div class="card card-stats">
+                                <div class="card-content">
+                                    <!--<p class="category"></p>-->
+                                    <h4 class="card-title">ظرفیت:<span id="labelCapacity"></span>نفر</h4>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <!--<i class="material-icons"><i class="fa fa-history"></i></i>-->
+                                        تعداد افراد درون باشگاه :<span id="labelOnMember"></span>نفر
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-12 col-sm-12">
+                            <div class="card card-stats">
+                                <div class="card-content">
+                                    <!--<p class="category">درآمد</p>-->
+                                    <h5 class="card-title">ثبت نامی ها</h5>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        تعداد افراد ثبت نام شده :<span id="countMemberRegister"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-12 col-sm-12">
+                            <div class="card card-stats">
+                                <div class="card-content">
+                                    <p class="category"></p>
+                                    <h4 class="card-title">کلاس ها</h4>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        تعداد کلاس های ثبت شده : <span id="countClass"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-12 col-sm-12">
+                            <div class="card card-stats">
+                                <div class="card-content">
+                                    <p class="category"></p>
+                                    <h4 class="card-title">
+                                        <?php  echo Html::a('
+                                                ساخت کارت جدید',['tag/tag-create'],[
+                                                        'class'=>'bg-info btn-block',
+                                        ])
+                                        ?>
+                                    </h4>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        ایجاد کارت در سیستم
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                <?php
+                }else
+                {
+                ?>
+
+                    <div class="row">
+                        <div class="col-lg-3 col-md-12 col-sm-12">
+                            <div class="card card-stats">
+                                <?= Html::a('<div class="card-header" title="باز کردن کمد" data-background-color="orange">
                                             <i class="fa fa-cloud"></i>
                                         </div>',
                                     ['gym/open-dresser'],[
-                                'onclick' => 'showModalOpenDresser(this);return false;'
-                            ]) ?>
-                            
-                            <div class="card-content">
-                                <p class="category"></p>
-                                <h4 class="card-title">باز کردن کمد</h4>
-                            </div>
-                            <div class="card-footer">
-                                <div class="stats">
-                                    <i class="material-icons text-danger">هشدار</i>
-                                    <a href="#pablo">در مواقع اضطراری استفاده شود</a>
+                                        'onclick' => 'showModalOpenDresser(this);return false;'
+                                    ]) ?>
+
+                                <div class="card-content">
+                                    <p class="category"></p>
+                                    <h4 class="card-title">باز کردن کمد</h4>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="material-icons text-danger">هشدار</i>
+                                        <a href="#pablo">در مواقع اضطراری استفاده شود</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-12 col-sm-12">
-                        <div class="card card-stats">
-                            <?= Html::a('<div class="card-header" data-background-color="red">
+                        <div class="col-lg-3 col-md-12 col-sm-12">
+                            <div class="card card-stats">
+                                <?= Html::a('<div class="card-header" title="ظرفیت" data-background-color="red">
                                             <i class="fa fa-eye"></i>
                                         </div>',
                                     ['report/report-gym'],[
-                            ]) ?>
-                            <div class="card-content">
-                                <!--<p class="category"></p>-->
-                                <h4 class="card-title">ظرفیت:<span id="labelCapacity"></span>نفر</h4>
-                            </div>
-                            <div class="card-footer">
-                                <div class="stats">
-                                    <!--<i class="material-icons"><i class="fa fa-history"></i></i>-->
-                                    تعداد افراد درون باشگاه :<span id="labelOnMember"></span>نفر
+                                    ]) ?>
+                                <div class="card-content">
+                                    <!--<p class="category"></p>-->
+                                    <h4 class="card-title">ظرفیت:<span id="labelCapacity"></span>نفر</h4>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <!--<i class="material-icons"><i class="fa fa-history"></i></i>-->
+                                        تعداد افراد درون باشگاه :<span id="labelOnMember"></span>نفر
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-12 col-sm-12">
-                        <div class="card card-stats">
-                            <?= Html::a('<div class="card-header" data-background-color="green">
+                        <div class="col-lg-3 col-md-12 col-sm-12">
+                            <div class="card card-stats">
+                                <?= Html::a('<div class="card-header" title="ثبت نام" data-background-color="green">
                                             <i class="fa fa-plus"></i>
                                         </div>',
                                     ['member/member-create'],[
-                                'onclick' => 'showModalClassRoom(this);return false;'
-                            ]) ?>
-                            <div class="card-content">
-                                <!--<p class="category">درآمد</p>-->
-                                <h5 class="card-title">ثبت نام</h5>
-                            </div>
-                            <div class="card-footer">
-                                <div class="stats">
-                                    تعداد افراد ثبت نام شده :<span id="countMemberRegister"></span>
+                                        'onclick' => 'showModalClassRoom(this);return false;'
+                                    ]) ?>
+                                <div class="card-content">
+                                    <!--<p class="category">درآمد</p>-->
+                                    <h5 class="card-title">ثبت نام</h5>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        تعداد افراد ثبت نام شده :<span id="countMemberRegister"></span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-12 col-sm-12">
-                        <div class="card card-stats">
-                            <?= Html::a('<div class="card-header" data-background-color="blue">
+                        <div class="col-lg-3 col-md-12 col-sm-12">
+                            <div class="card card-stats">
+                                <?= Html::a('<div class="card-header" title="تخصیص کلاس" data-background-color="blue">
                                             <i class="fa fa-plus"></i>
                                         </div>',
                                     ['gym/give-class'],[
-                                'onclick' => 'showModalClassRoom(this);return false;'
-                            ]) ?>
-                            <div class="card-content">
-                                <p class="category"></p>
-                                <h4 class="card-title">تخصیص کلاس</h4>
-                            </div>
-                            <div class="card-footer">
-                                <div class="stats">
-                                    تعداد کلاس های ثبت شده : <span id="countClass"></span>
+                                        'onclick' => 'showModalClassRoom(this);return false;'
+                                    ]) ?>
+                                <div class="card-content">
+                                    <p class="category"></p>
+                                    <h4 class="card-title">تخصیص کلاس</h4>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        تعداد کلاس های ثبت شده : <span id="countClass"></span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="row">
-<!--                    <div class="col-lg-3 col-md-12 col-sm-12 col-md-offset-0 col-lg-offset-6">
-                        <div class="card card-stats">-->
-                            <?php
-//                            echo Html::a('<div class="card-header" data-background-color="blue">
-//                                            <i class="fa fa-address-card-o"></i>
-//                                        </div>',
-//                                    ['member/member-temporary']) 
-//                                    ?>
-                            
-<!--                            <div class="card-content">
-                                <p class="category"></p>
-                                <h4 class="card-title">ثبت نام موقت</h4>
-                            </div>
-                            <div class="card-footer">
-                                <div class="stats">
-                                    تعداد افراد ثبت نام موقت :<span id="labelOnMember"></span>نفر
-                                </div>
-                            </div>
-                        </div>
-                    </div>-->
-<!--                    <div class="col-lg-3 col-md-12 col-sm-12">
-                        <div class="card card-stats">-->
-                            <?php // echo Html::a('<div class="card-header" data-background-color="orange">
-//                                            <i class="fa fa-credit-card"></i>
-//                                        </div>',
-//                                    ['tag/tag-create']) ?>
-                            
-<!--                            <div class="card-content">
-                                <p class="category"></p>
-                                <h4 class="card-title">ساخت کارت جدید</h4>
-                            </div>
-                            <div class="card-footer">
-                                <div class="stats">
-                                    ایجاد کارت در سیستم
-                                </div>
-                            </div>
-                        </div>
-                    </div>-->
-                </div>
-                
+
+                <?php
+                }
+                ?>
+
+
+
+
+
+
+
+
+
+
+
                 <div class="container-fluid">
                     <?= $content ?>
                 </div>
             </div>
+
+
             <footer class="footer">
                 <div class="container-fluid">
                     <nav class="pull-left">

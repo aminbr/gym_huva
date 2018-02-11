@@ -27,7 +27,7 @@ $this->title = 'تنظیمات اولیه';
                                         else if($key == 'ip_display')
                                             $key_val = ' آی پی نمایشگر';
                                         else if($key == 'delay_exit')
-                                            $key_val = ' تاخیر در خروج(دقیقه)';
+                                            $key_val = ' تاخیر در ورود و خروج(دقیقه)';
                                     ?>
                                     <label><?= Yii::t('app', $key_val); ?></label>
                                     <?= Html::textInput('Config['.$key.']', $setting['advance'][$key], [

@@ -330,7 +330,10 @@ class TagReader extends Model{
                         ->orderBy('id desc')->one();
                 if(!empty($enterExitMemberModel))
                 {
-                    $exitDateMember = intval($enterExitMemberModel->exit_date)+600; // 600 second = 10 min
+                    $setting = Yii::$app->utility->getSetting();
+                    $limitTimeEnter = $setting['advance']['delay_exit'];
+                    $limitTimeEnter = $limitTimeEnter*60;
+                    $exitDateMember = intval($enterExitMemberModel->exit_date)+$limitTimeEnter;
                     if($exitDateMember > time())
                     {
                         $res = '{"status":"3",'
