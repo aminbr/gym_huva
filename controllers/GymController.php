@@ -167,6 +167,7 @@ class GymController extends Controller{
         curl_exec($ch);
         curl_close($ch);
 
+        // comit
         return $this->redirect(['dashboard']);
     }
     
